@@ -1,0 +1,159 @@
+
+
+@media all and (max-width: 1050px) {
+	.userOptions {	
+		.wrapper {
+			width: 90%;
+		}
+	}
+}
+
+@media all and (max-width: 900px) {
+
+	aside#filters {
+		left: 3%;
+		button {
+			font-size: 1.8rem;
+		}
+	}
+	section.results {
+		width: 70%;
+	}
+}
+
+@media all and (max-width: 850px) {
+
+	header h1 {
+		font-size: 9.8rem;
+	}
+}
+
+
+@media all and (max-width: 835px) {
+	aside#filters {
+		left: 3%;
+		h2 {
+			font-size: 2.6rem;
+		}
+		button {
+			font-size: 1.6rem;
+		}
+	}
+	section.results {
+		padding-right: 20px;
+		.recipeImage {
+			width: 220px;
+			height: 147px;
+			span.primary {
+				h3 {
+					font-size: 2.2rem;
+				}
+				h4 {
+					font-size: 1.7rem;
+				}
+			}
+		}
+	}
+
+}
+
+@media all and (max-width: 770px) {
+	.userOptions {
+		.wrapper {
+			width: 70%;
+		}
+		form fieldset {
+			h2 {
+				margin-bottom: 30px;
+			}
+		}
+		form fieldset.chooseAnimal{
+			label {
+			width: 50%;
+			}	
+		} 
+	}
+}
+
+@media all and (max-width: 660px) {
+	header h1 {
+		font-size: 9rem;
+	}
+}
+
+
+@media all and (max-width: 620px) {
+	form fieldset {
+		
+		h2 {
+			width: 70%;
+			margin: 0 auto;
+
+		}
+	} 
+}
+
+@media all and (max-width: 570px) {
+	header {
+		padding: 20px 0;
+		.wrapper {
+			
+			h1 {
+			font-size: 7.8rem;
+			}
+			object:before, 
+			object:after {
+				width: 150%;
+			}
+		}
+	}
+	.userOptions {
+		.wrapper {
+			width: 80%;
+		}
+
+	}
+}
+
+@media all and (max-width: 475px) {
+	form fieldset {
+		
+		h2 {
+			width: 85%;
+
+		}
+	} 
+}
+
+@media all and (max-width: 450px) {
+	header {
+		.wrapper {
+			object:before, 
+			object:after {
+				width: 80%;
+			}
+		}
+		button#showOptions {
+			padding: 10px 20px;
+			font-size: 2.8rem;
+		}
+	}
+}
+
+@media all and (max-width: 400px) {
+	.userOptions {
+		.wrapper {
+			width: 95%;
+		}
+		a#home {
+			display: none;
+		}
+	}
+	.userOptions form fieldset object.animalIcon {
+		width: 120px;
+	}
+	.userOptions form fieldset.choosePart {
+		margin-bottom: 0;
+	}
+}
+

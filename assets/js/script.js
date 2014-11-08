@@ -1,4 +1,3 @@
-
 var offalApp = {};
 
 // WHERE TO APPEND SEARCH RESULTS 
@@ -278,6 +277,7 @@ offalApp.displaySearchResults = function(result){
 	$('footer').show();
 };
 
+
 // DOC READY
 $(function(){
 	// RESET FORMS
@@ -286,18 +286,19 @@ $(function(){
 	offalApp.init();
 
 	// HIDE EVERYTHING EXCEPT HEADER
-	$('#userOptions').find('form').hide();
-	$('#results').hide();
+
 	$('footer').hide();
 
 	// SCROLL TO FORM WHEN USER CLICKS "GET RECIPES" BUTTON
-	$('#scrollToOptions').on('click', function(){
-		$('#userOptions').find('form').fadeIn(400);
-		$.smoothScroll({
-			scrollTarget: '#userOptions',
-			speed: 600,
-			offset: 100
-		});
+	$('#showOptions').on('click', function(){
+		$('header').fadeOut(800);
+		$('#userOptions').delay(400).fadeIn(600);
+	});
+
+	$('#home').on('click',function(e){
+		$('#userOptions').fadeOut(800);
+		$('header').delay(400).fadeIn(800);
+		
 	});
 
 	// SEARCH RESULT FILTERS 	
@@ -365,5 +366,3 @@ $(function(){
 // 		}
 // 	});
 // };
-// -------------------------------------------------------------------------
-

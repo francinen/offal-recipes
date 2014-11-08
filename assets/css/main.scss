@@ -18,6 +18,8 @@
 
  // ------------------------------------------------------------------------------ 
 
+
+
 // HOSTED WEB FONTS
 @font-face {
     font-family: 'clear_sans_lightregular';
@@ -41,23 +43,68 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'sorts_mill_goudyitalic';
+    src: url('../fonts/sortsmillgoudy_italic_macroman/GoudyStM-Italic-webfont.eot');
+    src: url('../fonts/sortsmillgoudy_italic_macroman/GoudyStM-Italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/sortsmillgoudy_italic_macroman/GoudyStM-Italic-webfont.woff') format('woff'),
+         url('../fonts/sortsmillgoudy_italic_macroman/GoudyStM-Italic-webfont.ttf') format('truetype'),
+         url('../fonts/sortsmillgoudy_italic_macroman/GoudyStM-Italic-webfont.svg#sorts_mill_goudyitalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'sorts_mill_goudyregular';
+    src: url('../fonts/sortsmillgoudy_regular_macroman/GoudyStM-webfont.eot');
+    src: url('../fonts/sortsmillgoudy_regular_macroman/GoudyStM-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/sortsmillgoudy_regular_macroman/GoudyStM-webfont.woff') format('woff'),
+         url('../fonts/sortsmillgoudy_regular_macroman/GoudyStM-webfont.ttf') format('truetype'),
+         url('../fonts/sortsmillgoudy_regular_macroman/GoudyStM-webfont.svg#sorts_mill_goudyregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'hvd_posterregular';
+    src: url('../fonts/HVD-Poster-fontfacekit/HVD_Poster-webfont.eot');
+    src: url('../fonts/HVD-Poster-fontfacekit/HVD_Poster-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/HVD-Poster-fontfacekit/HVD_Poster-webfont.woff') format('woff'),
+         url('../fonts/HVD-Poster-fontfacekit/HVD_Poster-webfont.ttf') format('truetype'),
+         url('../fonts/HVD-Poster-fontfacekit/HVD_Poster-webfont.svg#hvd_posterregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 // VARIABLES
 $font-medium: 'clear_sans_mediumregular';
 $font-light: 'clear_sans_lightregular';
 $header-font-stack: 'Nixie One', "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+$goudyRegular: 'sorts_mill_goudyregular';
+$hvdPoster: 'hvd_posterregular';
+$bkg: url(../images/halftone.png) repeat;
+$headerColour: #d43b00;
 
 // MIXINS
 @mixin buttonStyle {
-	border: 3px solid #f7f7f7;
+	border: 2px solid #918d81;
 	font-size: 3rem;
 	padding: 10px 30px;
-	background: rgba(50, 67, 83, 0.9);
+	background: none;
 	border-radius: 50px;
 	text-align: center;
-	font-family: $font-light;
-	color: #d6d6d6;
-	-webkit-transition: all 0.3s;
-	transition: all 0.3s;
+	font-family: $goudyRegular;
+	color: #918d81;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+	font-size: 3.8rem;
+	&:hover {
+		color: #d43b00;
+		border-color: #d43b00;
+	}
 }
 
 @mixin buttonEffects {
@@ -121,13 +168,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-	background: url(../images/bkg.jpg) no-repeat center top;
-	-webkit-background-size: cover;
-	background-size: cover;	
-	background-attachment: fixed;
+	
+	// background: url(../images/bkg.jpg) no-repeat center top;
+	// -webkit-background-size: cover;
+	// background-size: cover;	
+	// background-attachment: fixed;
 	font-size: 2rem;
 	font-family: $font-light;
 	letter-spacing: 1.4px;
+	background: $bkg;
 }
 
 .wrapper {
@@ -142,46 +191,72 @@ body {
 
 header {
 	width: 100%;
-	height: 570px;
-
-	// ------------------ GRADIENT --------------------
-		background: linear-gradient(to bottom, rgba(29, 36, 38,0.75) 0%, rgba(68,84,99,0.43) 60%, rgba(255,255,255,0) 100%); 
-		// FF3.6+ 
-		background: -moz-linear-gradient(top, rgba(29, 36, 38,0.75) 0%, rgba(68,84,99,0.43) 60%, rgba(255,255,255,0) 100%); 
-		// CHROME, SAFARI4+
-		background: -webkit-gradient(linear, left top, left bottom, color-stop (0%, rgba(29, 36, 38,0.75) ), color-stop(60%, rgba(68,84,99, 0.43)), color-stop(100%, rgba(255,255,255,0))); 
-		// CHROME10+, SAFARI5.1+
-		background: -webkit-linear-gradient(top, rgba(29, 36, 38,0.75) 0%, rgba(68,84,99,0.43) 60%, rgba(255,255,255,0) 100%);
-		// OPERA
-		background: -o-linear-gradient(top, rgba(29, 36, 38,0.75) 0%, rgba(68,84,99,0.43) 60%, rgba(255,255,255,0) 100%); 
-		// IE10+
-		background: -ms-linear-gradient(top, rgba(29, 36, 38,0.75) 0%, rgba(68,84,99,0.43) 60%, rgba(255,255,255,0) 100%); 
-		// IE6-9
-		filter: 
-		progid:DXImageTransform.Microsoft.gradient(startColorstr='#ba1d2e42', endColorstr='#00ffffff', GradientType=0);
-		
-	// --------------------------------------	
-	
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	padding: 100px 0;
 	.wrapper { // HEADER WRAPPER
-		width: 90%;
-		max-width: 1200px;
+		width: 70%;
+		max-width: 720px;
 		padding: 0;
 		padding-top: 2%;
 		margin: 0 auto;
-		text-align: left;
-		color: #fff;
+		text-align: center;
+		object {
+			display: inline-block;
+			position: relative;
+			width: 100px;
+			height: 100px;
+			margin: 10px 0;
+			svg {
+				position: absolute;
+				width: 100%;
+				height: 100px;
+				top: 0;
+				left: 0;
+			}
+		}
+		object:before,
+		object:after {
+			content: "";
+			position: absolute;
+			top: 50%;
+			width: 200%;
+			height: 10px;
+			border-top: 2px solid #490000;
+			border-bottom: 4px solid #490000;
+		}
+		object:before {
+			right: 100%;
+			margin-right: 15px;
+		}
+		object:after {
+			left: 100%;
+			margin-left: 15px;
+		}
 	}
 	h1 {
-		font-family: $header-font-stack;	
-		font-size: 10rem;
+		font-family: $hvdPoster;	
+		font-size: 11.6rem;
+		color: #d43b00;
+		text-transform: lowercase;
 		.kerning {
 			letter-spacing: 5px;
 		}
 	}
 	h3.tagline {
-		font-family:  $header-font-stack;	
+		font-family: $goudyRegular;	
 		font-size: 2.5rem;
+		color: #454a51;
 		margin-bottom: 40px;
+		max-width: 420px;
+		margin: 0 auto;
+	}
+	button {
+		@include buttonStyle;
+		margin: 40px 0 80px;
+		
 	}
 	nav {
 		width: 30%;
@@ -189,16 +264,7 @@ header {
 		display: inline-block;
 		// margin: 80px auto;
 		vertical-align: top;
-		button {
-			float: left;
-			@include buttonStyle;
-			font-size: 3.8rem;
-			&:hover,
-			&:focus
-			{
-				@include buttonEffects;
-			}
-		}
+		
 	}
 	p {
 		display: inline-block;
@@ -215,14 +281,64 @@ header {
 }
 // END OF HEADER
 
+path.heart {
+	animation: heartbeat 0.5s ease infinite;
+	-webkit-animation: heartbeat 0.5s ease infinite;
+	
+}
+
+@-webkit-keyframes heartbeat {
+	from {
+		transform: scale(1);
+	}
+	to {
+		transform: scale(1.03);
+	}
+}
+
+@keyframes heartbeat {
+	from {
+		transform: scale(1);
+	}
+	to {
+		transform: scale(1.03);
+	}
+}
+
 // USER OPTIONS
+a#home {
+	color: #918d81;
+	position: relative;
+	top: 40px;
+	left: 40px;
+	font-weight: 500;
+	font-family: $hvdPoster;
+	-webkit-transition: color 0.3s;
+	transition: color 0.3s;
+	object {
+		display: inline-block;
+		width: 60px;
+		position: relative;
+		svg {
+			width: 100%;
+			height: 100%;
+		}
+	}
+	&:hover {
+			color: $headerColour;
+			cursor: pointer;
+		}
+}
 .userOptions {
 	width: 100%;
+	background: $bkg;
+	display: none;
+
 	form {
 		font-family: $font-light;
 		fieldset {
 			border: none;
-			background-color: rgba(230,230,230,0.85);
+			// background-color: rgba(230,230,230,0.85);
 			padding: 20px 0 40px 0;
 			border-radius: 8px;
 			width: 100%;
@@ -230,9 +346,9 @@ header {
 			margin-bottom: 2%;
 			text-align: center;
 			h2 {
-				font-family: $font-medium;
+				font-family: $hvdPoster;
 				font-size: 3.5rem;
-				color: #32373a;
+				color: #d43b00;
 			}
 			.alert {
 				color: #a50000;
@@ -248,12 +364,14 @@ header {
 				&:checked + label > object.animalIcon > svg,
 				&:focus + label > object.animalIcon > svg 
 				&:active + label > object.animalIcon > svg {
-					fill: #889fa8;
+					fill: #454a51;
+					
 				}
 				&:checked + label > h3,
 				&:focus + label > h3
 				&:active + label > h3 {
-					color: #889fa8;
+					fill: #454a51;
+					
 				}
 			}
 			label {
@@ -263,6 +381,7 @@ header {
 					margin: 0;
 					font-size: 2rem;
 					color: #454a51;
+					font-family: $goudyRegular;
 				}
 			}
 			object.animalIcon {
@@ -270,14 +389,19 @@ header {
 				height: auto;
 				display: inline-block;
 				position: relative;
+				margin-right: 10%;
+				&:last-of-type {
+					margin-right: 0;
+				}
 				svg {
 					width: 100%;
 					height: 100%;
-					fill: #454a51;
+					fill: #918d81;
+					
 				}
 			}
 			.checked {
-				fill: #889fa8;
+				fill: #454a51;
 			}
 		}
 
@@ -285,6 +409,7 @@ header {
 			text-align: center;
 			margin-bottom: 50px;
 			p {
+				font-family: $goudyRegular;
 				font-size: 3rem;	
 			}
 			legend {
@@ -299,18 +424,20 @@ header {
 				display:none;
 			}
 			input {
+
 				&:checked + label {
-					background: #889fa8;
+					background: #454a51;
 				}
 
 			}
 			label {
 				padding: 10px;
-				background: #454a51;
+				background: #918d81;
 				margin: 2% 2% 0 2%;
 				text-align: center;
 				color: #f4f4f4;
 				letter-spacing: 1px;
+				font-family: $goudyRegular;
 				&:hover {
 					cursor: pointer;
 				}
@@ -318,11 +445,6 @@ header {
 		}
 		#searchButton {
 			@include buttonStyle;
-			&:hover,
-			&:focus
-			{
-				@include buttonEffects;
-			}
 		}
 	}
 
@@ -336,6 +458,7 @@ div.resultsBkg {
 	padding: 0;
 	min-height: 600px; 
 	position: relative;
+	display: none;
 	.wrapper {
 		width: 90%;
 		max-width: 1200px;
@@ -404,6 +527,7 @@ div.resultsBkg {
 		
 		// border: 1px solid white;
 		#credit {
+			color: lighten(#f7f7f7,4);
 			text-align: right;
 			#yummly {
 				display: none;
@@ -421,8 +545,10 @@ div.resultsBkg {
 				list-style-type: none;
 				// background-color: rgba(26,65,91,0.85);
 				padding: 20px;
-				border-top: 1px solid #000;
+				border-top: 2px solid #5D677B;
 				position: relative;
+				-webkit-transition: background-color 0.2s;
+				transition: background-color 0.2s;
 				&:hover {
 					background-color: rgba(50,67,83,0.7);
 				}
@@ -471,3 +597,4 @@ footer {
 	font-weight: 600;
 }
 
+@import 'mq';
