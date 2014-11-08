@@ -289,20 +289,42 @@ $(function(){
 
 	$('footer').hide();
 
+	var toTop = function(){
+		$('html,body').animate({scrollTop:0},800);
+	};
+
+	var showOptions = function(){
+		$('#userOptions').animate({opacity:'toggle'},1300);
+	}
+	$('div.resultsBkg').height($(this).innerHeight());
+	$('.recipeImage').height($('.recipeImage').width()*0.6666);
+	$(window).resize(function(){	
+		$('div.resultsBkg').height($(this).innerHeight());
+		var w = $('.recipeImage').width();
+		$('.recipeImage').height(w*0.6666);
+	});
+
 	// SCROLL TO FORM WHEN USER CLICKS "GET RECIPES" BUTTON
 	$('#showOptions').on('click', function(){
-		$('header').fadeOut(800);
-		$('#userOptions').delay(400).fadeIn(600);
+		$('header').animate({opacity:'toggle'},800,toTop(),showOptions());
+
 	});
 
 	$('#home').on('click',function(e){
-		$('#userOptions').fadeOut(800);
+		$('#userOptions').animate({opacity:'toggle'},800,toTop());
 		$('header').delay(400).fadeIn(800);
 		
 	});
 
+	$('a#showFilters').on('click', function(){
+		$('.filterOptions').slideToggle(500, function(){
+			$('i').toggleClass('fa-chevron-up');
+			$('i').toggleClass('fa-chevron-down');
+		});
+	});
+
 	// SEARCH RESULT FILTERS 	
-	$('filter button').on('click', function(e){
+	$('#filters button').on('click', function(e){
 		e.preventDefault();
 	});
 	$('button.rated').on('click', function(e){

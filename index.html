@@ -7227,10 +7227,6 @@
 			</object>
 			<h3 class="tagline">Find recipes that will leave an offal taste in your mouth</h3>
 			<button id="showOptions" tabindex="1">Get Recipes</button>	
-			<!-- <nav>
-				<button id="scrollToOptions" tabindex="1">Get Recipes</button>			
-			</nav>
-			<p><em>Offal:</em> the internal organs, entrails, and and extremities of an animal that are not skeletal muscle. Representing the "nose to tail" approach to food, various types of offal are enjoyed as delicacies and everyday ingredients in cuisines around the world.</p> -->
 		</div>
 		<!-- /.wrapper -->
 	</header>
@@ -7391,7 +7387,7 @@
 
 	<div class="resultsBkg" id="results">
 		<div class="wrapper clearfix">
-			<aside id="filters">
+			<aside class="side clearfix" id="filters">
 				<h2>Filter Results</h2>
 				<button class="rated">Highest Rated</button>
 				<button class="quickest">30 Minutes or Less</button>
@@ -7403,13 +7399,25 @@
 					<button id="newSearch">New Search</button>
 				</div>	
 			</aside>
+			<aside class="top" id="filters">
+				<a href="#" id="showFilters"><h2>Filter Results <i class="fa fa-chevron-down"></i></h2></a>
+				<div class="filterOptions clearfix">
+					<button class="rated">Highest Rated</button>
+					<button class="quickest">30 Minutes or Less</button>
+					<button class="meaty clearfix">
+					Most Carnivorous</button>
+					<button class="all">Show All</button>
+					<button id="scrollToFirst">Top of List</button>
+					<button id="newSearch">New Search</button>
+
+				</div>
+			</aside>
 			<!-- / FILTERS -->
 			<section class="results clearfix">
-				<h5 id="credit">Recipe search powered by <a href="http://www.yummly.com/recipes" target="_blank"><span id="yummly">Yummly</span><img src="assets/images/icons/yummly.png"></a></h5>
 				<ul id="#resultsList">
 				<!-- APPEND SEARCH RESULTS HERE -->
 				<!-- TEMPLATE -->
-<!-- 				<li class="clearfix recipe">
+				<li class="clearfix recipe">
 						<a href="">
 						<div class="recipeImage">
 							<img src="http://lh5.ggpht.com/Z_bfwmKnhxN-5V7Fz8cEWqdM_1WicQW_jb4lCG2JHNEZYEtgByqCvtIH0geHVVoLLTHQ-Sh_SmzTWJV67jYKoSw" alt="">
@@ -7423,9 +7431,11 @@
 								<h6>Ready in</h6>
 							</span>
 						</a>
-					</li> -->
+					</li>
 				</ul>
+				<h5 id="credit">Recipe search powered by <a href="http://www.yummly.com/recipes" target="_blank"><span id="yummly">Yummly</span><img src="assets/images/icons/yummly.png"></a></h5>
 			</section>
+
 			<!-- / SEARCH RESULTS -->
 		</div><!-- /.wrapper -->
 	</div><!-- /#results -->

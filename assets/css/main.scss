@@ -118,7 +118,7 @@ $headerColour: #d43b00;
 @mixin filterStyle {
 	box-shadow: none;
 	border: 2px solid #5D677B;
-	font-size: 2rem;
+	font-size: 1.8rem;
 	padding: 10px 20px;
 	background: rgba(50, 67, 83, 0.9);
 	border-radius: 50px;
@@ -182,7 +182,7 @@ body {
 .wrapper {
 	width: 70%;
 	max-width: 1200px;
-	padding: 10% 0;
+	padding: 50px 0 150px;
 	margin: 0 auto;
 	text-align: center;
 }
@@ -190,6 +190,7 @@ body {
  // -------------------------- HOUSE KEEPING -------------------------- 
 
 header {
+	// display: none;
 	width: 100%;
 	position: absolute;
 	top: 0;
@@ -253,7 +254,7 @@ header {
 		max-width: 420px;
 		margin: 0 auto;
 	}
-	button {
+	#showOptions{
 		@include buttonStyle;
 		margin: 40px 0 80px;
 		
@@ -333,22 +334,24 @@ a#home {
 	width: 100%;
 	background: $bkg;
 	display: none;
-
+	.wrapper {
+		padding-top:65px;
+	}
 	form {
 		font-family: $font-light;
 		fieldset {
 			border: none;
 			// background-color: rgba(230,230,230,0.85);
-			padding: 20px 0 40px 0;
 			border-radius: 8px;
 			width: 100%;
 			margin: 0 auto;
-			margin-bottom: 2%;
+			margin-bottom: 20px;
 			text-align: center;
 			h2 {
 				font-family: $hvdPoster;
 				font-size: 3.5rem;
 				color: #d43b00;
+				margin-bottom: 30px;
 			}
 			.alert {
 				color: #a50000;
@@ -466,26 +469,22 @@ div.resultsBkg {
 
 	}
 }
+
+$w: 45%;
 	// FILTERS
-	aside {
-		width: 25%;
+	aside.side, aside.top {
 		height: auto;
 		display: inline-block;
 		text-align: left;
-		position: absolute;
-		top: 3%;
-		left: 5%;
-		// border-right: 2px solid #324353;
 		h2 {
 			color: #f7f7f7;
+			font-family: $font-light;
+			font-size: 2rem;
 		}
 		button {
-			display: block;
+		
 			@include filterStyle;
 			margin-bottom: 12px;
-			&:first-of-type {
-				margin-top: 10px;
-			}
 			&:hover,
 			&:focus {
 				@include filterEffects;
@@ -503,6 +502,26 @@ div.resultsBkg {
 			margin-top: 25px;
 			padding-top: 15px;
 		}
+		button {
+			display: block;
+		}
+	}
+	aside.side {
+		width: 25%;
+		position: absolute;
+		top: 3%;
+		left: 5%;
+		h2 {
+			color: #f7f7f7;
+			font-family: $font-light;
+			font-size: 1.8rem;
+		}
+		button {
+			margin-bottom: 12px;
+			&:first-of-type {
+				margin-top: 10px;
+			}
+		}
 		.goBack:before {
 			content: "";
 			position: absolute;
@@ -513,6 +532,60 @@ div.resultsBkg {
 			border-top: 1px dashed white;
 		}
 	}
+	aside.top {
+		width: 100%;
+		display: none;
+		div.filterOptions {
+			display: none;
+
+		}
+		// position: absolute;
+		// top: 3%;
+		// left: 5%;
+		h2 {
+			margin-bottom: 15px;
+			// border-bottom: 1px dashed white;
+		}
+		button {
+			float: left;
+			margin-right: 10px;
+			font-size: 1.5rem;
+			padding: 8px 15px;
+
+		}
+		// .goBack:before {
+		// 	content: "";
+		// 	position: absolute;
+		// 	left: 0;
+		// 	top: 0;
+		// 	height: 1px;
+		// 	width: 60%;
+		// 	border-top: 1px dashed white;
+		// }
+	}
+	// aside.filters#side {
+		
+		
+	// }
+	// aside#top {
+	// 	display: none;
+	// 	width: 25%;
+	// 	position: absolute;
+	// 	top: 3%;
+	// 	left: 5%;
+	// 	button {
+	// 		display: block;
+	// 	}
+	// 	.goBack:before {
+	// 		content: "";
+	// 		position: absolute;
+	// 		left: 0;
+	// 		top: 0;
+	// 		height: 1px;
+	// 		width: 60%;
+	// 		border-top: 1px dashed white;
+	// 	}
+	// }
 	.fixed {
 		position: fixed;
 		top: 11%;
@@ -529,6 +602,7 @@ div.resultsBkg {
 		#credit {
 			color: lighten(#f7f7f7,4);
 			text-align: right;
+			border-top: 2px solid #5D677B;
 			#yummly {
 				display: none;
 			}
@@ -539,6 +613,7 @@ div.resultsBkg {
 		}
 		ul {
 			padding: 0;
+			margin: 0;
 			list-style-type: none;
 			.recipe {
 				width: 100%;
@@ -559,20 +634,25 @@ div.resultsBkg {
 			// float:left;
 			width: 100%;
 			font-family: $font-medium;
+			font-family: $goudyRegular;
 			h3 {
-				font-size: 2.4rem;
+				font-size: 2rem;
+				margin-bottom: 8px;
+
 			}
 			h4 {
-				font-size: 2rem;
+				font-size: 1.8rem;
+				color: lighten(#5D677B,25);
 			}
 		}
 		.recipeImage {
 			width: 300px;
-			height: 200px;
 			overflow: hidden;
 			float: left;
 			margin-right: 20px;
 			border-radius: 5px;
+			border: 2px solid #5D677B;
+			
 			// float: right;
 			img {
 			 width: 100%;
@@ -582,8 +662,9 @@ div.resultsBkg {
 		span.secondary {
 			position: relative;
 			top: 10px;
+			font-size: 1.6rem;
 			h5{
-			font-size: 1.8rem;
+			margin-bottom: 5px;
 			}
 		}
 	}
