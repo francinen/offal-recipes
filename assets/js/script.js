@@ -35,11 +35,11 @@ offalApp.init = function(){
 			// FILTERS LIST BECOMES FIXED
 			$(document).scroll(function(){
 				var y = $(this).scrollTop();
-				var x = $('#results').position();
+				var x = $('.resultsBkg').position();
 				if (y > (x.top - 50)) {
-					$('#filters').addClass('fixed');
+					$('.side').addClass('fixed');
 				}else{
-					$('#filters').removeClass('fixed');
+					$('.side').removeClass('fixed');
 				}
 			});
 			
@@ -76,7 +76,20 @@ offalApp.filterParts = function(){
 	
 	$('input[value=chicken]').on('click', function(){
 		$('.choosePart').find('label, input, p').css('display','none');
-		$('label.heart, label.liver, label.feet, label.gizzard').css({'display':'block', 'width': '21%'});
+		var $chickenParts = $('label.heart, label.liver, label.feet, label.gizzard');
+		$chickenParts.show();
+		if ($(window).innerWidth()>=760){
+			$chickenParts.css({'width': '21%'});
+		}else{
+			$chickenParts.css({'width': '96%'});
+		}
+		$(window).resize(function(){
+			if ($(window).innerWidth()>=760){
+				$chickenParts.css({'width': '21%'});
+			}else{
+				$chickenParts.css({'width': '96%'});
+			}
+		});
 		$.smoothScroll({
 			scrollTarget: '#choosePart',
 			speed: 900,
@@ -84,7 +97,21 @@ offalApp.filterParts = function(){
 	});
 	$('input[value=beef]').on('click', function(){
 		$('.choosePart').find('label, input, p').css('display','none');
-		$('label.liver, label.tripe, label.marrow').css({'display':'block', 'width': '29.3333%'});
+		var $cowParts = $('label.liver, label.tripe, label.marrow');
+		$cowParts.css({'display':'block'});
+		if ($(window).innerWidth()>=760){
+			$cowParts.css({'width': '29.3333%'});
+		}else{
+			$cowParts.css({'width': '96%'});
+		}
+		$(window).resize(function(){
+			if ($(window).innerWidth()>=760){
+				$cowParts.css({'width': '29.3333%'});
+			}else{
+				$cowParts.css({'width': '96%'});
+			}
+		});
+		
 		$.smoothScroll({
 			scrollTarget: '#choosePart',
 			speed: 900,
@@ -92,7 +119,20 @@ offalApp.filterParts = function(){
 	});
 	$('input[value=lamb]').on('click', function(){
 		$('.choosePart').find('label, input, p').css('display','none');
-		$('label.liver, label.brain').css({'display':'block', 'width': '46%'});
+		var $lambParts = $('label.liver, label.brain');
+		$lambParts.css({'display':'block'});
+		if ($(window).innerWidth()>=760){
+			$lambParts.css({'width': '46%'});
+		}else{
+			$lambParts.css({'width': '96%'});
+		}
+		$(window).resize(function(){
+			if ($(window).innerWidth()>=760){
+				$lambParts.css({'width': '21%'});
+			}else{
+				$lambParts.css({'width': '96%'});
+			}
+		});
 		$.smoothScroll({
 			scrollTarget: '#choosePart',
 			speed: 900,
@@ -100,7 +140,20 @@ offalApp.filterParts = function(){
 	});
 	$('input[value=pig]').on('click', function(){
 		$('.choosePart').find('label, input, p').css('display','none');
-		$('label.tail, label.feet, label.ear').css({'display':'block', 'width': '29.3333%'});
+		var $pigParts = $('label.tail, label.feet, label.ear');
+		$pigParts.css({'display':'block'});
+		if ($(window).innerWidth()>=760){
+			$pigParts.css({'width': '21%'});
+		}else{
+			$pigParts.css({'width': '96%'});
+		}
+		$(window).resize(function(){
+			if ($(window).innerWidth()>=760){
+				$pigParts.css({'width': '21%'});
+			}else{
+				$pigParts.css({'width': '96%'});
+			}
+		});
 		$.smoothScroll({
 			scrollTarget: '#choosePart',
 			speed: 900,
@@ -289,34 +342,38 @@ $(function(){
 
 	$('footer').hide();
 
-	var toTop = function(){
-		$('html,body').animate({scrollTop:0},800);
-	};
 
 	var showOptions = function(){
 		$('#userOptions').animate({opacity:'toggle'},1300);
 	}
-	$('div.resultsBkg').height($(this).innerHeight());
-	$('.recipeImage').height($('.recipeImage').width()*0.6666);
-	$(window).resize(function(){	
-		$('div.resultsBkg').height($(this).innerHeight());
-		var w = $('.recipeImage').width();
-		$('.recipeImage').height(w*0.6666);
-	});
+	// $('div.resultsBkg').height($(this).innerHeight());
+	// $('.recipeImage').height($('.recipeImage').width()*0.6666);
+
+	// $(window).resize(function(){	
+	// 	$('div.resultsBkg').height($(this).innerHeight());
+	// 	var w = $('.recipeImage').width();
+	// 	$('.recipeImage').height(w*0.6666);
+	// });
+
+	// if ($('div.resultsBkg').show()){
+	// 	$('body').css({'background':'#445463'});
+	// }else{
+	// 	$('body').css({'background':'$bkg'});
+	// }
 
 	// SCROLL TO FORM WHEN USER CLICKS "GET RECIPES" BUTTON
 	$('#showOptions').on('click', function(){
-		$('header').animate({opacity:'toggle'},800,toTop(),showOptions());
-
+		$('header').animate({opacity:'toggle'},800,showOptions());
 	});
 
 	$('#home').on('click',function(e){
-		$('#userOptions').animate({opacity:'toggle'},800,toTop());
+		$('#userOptions').animate({opacity:'toggle'},800);
 		$('header').delay(400).fadeIn(800);
 		
 	});
 
-	$('a#showFilters').on('click', function(){
+	$('a#showFilters').on('click', function(e){
+		e.preventDefault();
 		$('.filterOptions').slideToggle(500, function(){
 			$('i').toggleClass('fa-chevron-up');
 			$('i').toggleClass('fa-chevron-down');

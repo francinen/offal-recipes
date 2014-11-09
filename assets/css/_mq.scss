@@ -9,6 +9,7 @@
 	section.results {
 		.recipeImage {
 				width: 265px;
+				height: 176px;
 		}
 	}
 }
@@ -30,6 +31,7 @@
 	section.results .recipeImage {
 		float: none;
 		width: 350px;
+		height: 233px;
 		margin: 0 0 10px;
 	}
 	section.results span.primary {
@@ -200,6 +202,10 @@
 	}
 	section.results .recipeImage {
 		width: 295px;
+		height: 197px;
+	}
+	.userOptions form fieldset.choosePart label {
+		font-size: 1.6rem;
 	}
 }
 
@@ -241,6 +247,7 @@
 	}
 	section.results .recipeImage {
 		width: 245px;
+		height: 163px;
 	}
 
 	}
