@@ -11,6 +11,7 @@ offalApp.apiKey = '5e222f130215043a2133fcb7e77788b6';
 offalApp.init = function(){	
 	offalApp.filterParts(); // FILTER OFFAL OPTIONS DEPENDING ON ANIMAL SELECTED
 	// WHEN SEARCH BUTTON IS CLICKED...
+
 	$('#searchButton').on('click', function(e){
 		e.preventDefault();
 			var selectedAnimal = offalApp.getAnimal(); // FIND AND STORE SELECTED ANIMAL
@@ -19,6 +20,7 @@ offalApp.init = function(){
 			if (selectedAnimal && selectedPart){ // IF USER SELECTED AN ANIMAL AND OFFAL
 				offalApp.searchResults.empty(); 
 				offalApp.getSearchResults(selectedAnimal, selectedPart);
+
 				// GET RID OF ANY PREVIOUS ALERT MESSAGES
 				$('#chooseAnimal').css('border','none').find('h2').text('Step 1: Choose an Animal').removeClass('alert').remove('i.fa-exclamation-circle');
 				$('#choosePart').css('border','none').find('h2').text('Step 2: Pick your offal').removeClass('alert').remove('i.fa-exclamation-circle');
@@ -27,11 +29,7 @@ offalApp.init = function(){
 				// SHOW ALL RESULTS
 				$('button.all').addClass('currentFilter');
 						
-				$('#results').fadeIn(900); // SEARCH RESULTS FADE IN & SCROLL TO SEARCH RESULTS
-					$.smoothScroll({
-						scrollTarget: '#results',
-						speed: 900,
-					});	
+				
 
 				// FILTERS LIST BECOMES FIXED
 				$(document).scroll(function(){
@@ -84,13 +82,13 @@ offalApp.filterParts = function(){
 		if ($(window).innerWidth()>=760){
 			$chickenParts.css({'width': '21%'});
 		}else{
-			$chickenParts.css({'width': '96%'});
+			$chickenParts.css({'width': '74%'});
 		}
 		$(window).resize(function(){
 			if ($(window).innerWidth()>=760){
 				$chickenParts.css({'width': '21%'});
 			}else{
-				$chickenParts.css({'width': '96%'});
+				$chickenParts.css({'width': '74%'});
 			}
 		});
 		$.smoothScroll({
@@ -105,13 +103,13 @@ offalApp.filterParts = function(){
 		if ($(window).innerWidth()>=760){
 			$cowParts.css({'width': '29.3333%'});
 		}else{
-			$cowParts.css({'width': '96%'});
+			$cowParts.css({'width': '74%'});
 		}
 		$(window).resize(function(){
 			if ($(window).innerWidth()>=760){
 				$cowParts.css({'width': '29.3333%'});
 			}else{
-				$cowParts.css({'width': '96%'});
+				$cowParts.css({'width': '74%'});
 			}
 		});
 		
@@ -127,13 +125,13 @@ offalApp.filterParts = function(){
 		if ($(window).innerWidth()>=760){
 			$lambParts.css({'width': '46%'});
 		}else{
-			$lambParts.css({'width': '96%'});
+			$lambParts.css({'width': '74%'});
 		}
 		$(window).resize(function(){
 			if ($(window).innerWidth()>=760){
 				$lambParts.css({'width': '46%'});
 			}else{
-				$lambParts.css({'width': '96%'});
+				$lambParts.css({'width': '74%'});
 			}
 		});
 		$.smoothScroll({
@@ -148,13 +146,13 @@ offalApp.filterParts = function(){
 		if ($(window).innerWidth()>=760){
 			$pigParts.css({'width': '29.3333%'});
 		}else{
-			$pigParts.css({'width': '96%'});
+			$pigParts.css({'width': '74%'});
 		}
 		$(window).resize(function(){
 			if ($(window).innerWidth()>=760){
 				$pigParts.css({'width': '29.3333%'});
 			}else{
-				$pigParts.css({'width': '96%'});
+				$pigParts.css({'width': '74%'});
 			}
 		});
 		$.smoothScroll({
@@ -166,22 +164,28 @@ offalApp.filterParts = function(){
 
 // RETRIEVE THE USER'S CHOICES
 // 1) Which animal was selected?
-	offalApp.getAnimal = function(){
-		var selectedAnimal = $('fieldset#chooseAnimal').find(':checked').val();
-			console.log(selectedAnimal);
-			return selectedAnimal;	
-	};
-	// 2) Which body part was selected?
-	offalApp.getPart = function(){
-			var selectedPart = $('fieldset#choosePart').find(':checked').val();
-			console.log(selectedPart);
-			return selectedPart;
-	};
+offalApp.getAnimal = function(){
+	var selectedAnimal = $('fieldset#chooseAnimal').find(':checked').val();
+		console.log(selectedAnimal);
+		return selectedAnimal;	
+};
+// 2) Which body part was selected?
+offalApp.getPart = function(){
+		var selectedPart = $('fieldset#choosePart').find(':checked').val();
+		console.log(selectedPart);
+		return selectedPart;
+};
+
+offalApp.preload = function(){
+	$('#searchButton').toggle();
+	$('#preloader').fadeToggle();
+}
 
 // GET RECIPES
 offalApp.getSearchResults = function(animal, part){
 	var query = '';
 	var ingredient = '';
+
 	if(animal=='lamb'&&part=='brain'){
 		$.ajax({
 		url: 'https://api.yummly.com/v1/api/recipes',
@@ -194,11 +198,21 @@ offalApp.getSearchResults = function(animal, part){
 			// SEARCH PHRASE
 			q: 'lamb brain'
 		},
+		beforeSend: function(){offalApp.preload()},
 		success: function(result){
 			console.log(result);
+			// SEARCH RESULTS FADE IN & SCROLL TO SEARCH RESULTS
+			setTimeout(function(){
+				$('#results').fadeIn(900); 
+				$.smoothScroll({
+					scrollTarget: '#results',
+					speed: 900,
+					afterScroll: function(){offalApp.preload()}
+				});
+			},1000);
 			offalApp.displaySearchResults(result.matches);
-		}
-	});
+			}
+		});
 	}else if (animal=='beef'&&part=='tripe'){
 		$.ajax({
 		url: 'https://api.yummly.com/v1/api/recipes',
@@ -211,12 +225,21 @@ offalApp.getSearchResults = function(animal, part){
 			// SEARCH PHRASE
 			q: 'beef tripe'
 		},
+		beforeSend: function(){offalApp.preload()},
 		success: function(result){
 			console.log(result);
+			// SEARCH RESULTS FADE IN & SCROLL TO SEARCH RESULTS
+			setTimeout(function(){
+				$('#results').fadeIn(900); 
+				$.smoothScroll({
+					scrollTarget: '#results',
+					speed: 900,
+					afterScroll: function(){offalApp.preload()}
+				});
+			},1000);
 			offalApp.displaySearchResults(result.matches);
-
-		}
-	});
+			}
+		});
 	}else if (animal=='beef'&&part=='marrow'){
 		$.ajax({
 		url: 'https://api.yummly.com/v1/api/recipes',
@@ -229,11 +252,21 @@ offalApp.getSearchResults = function(animal, part){
 			// SEARCH PHRASE
 			q: 'beef marrow'
 		},
+		beforeSend: function(){offalApp.preload()},
 		success: function(result){
 			console.log(result);
+			// SEARCH RESULTS FADE IN & SCROLL TO SEARCH RESULTS
+			setTimeout(function(){
+				$('#results').fadeIn(900); 
+				$.smoothScroll({
+					scrollTarget: '#results',
+					speed: 900,
+					afterScroll: function(){offalApp.preload()}
+				});
+			},1000);
 			offalApp.displaySearchResults(result.matches);
-		}
-	});
+			}
+		});
 	}else{
 	$.ajax({
 		url: 'https://api.yummly.com/v1/api/recipes',
@@ -248,12 +281,21 @@ offalApp.getSearchResults = function(animal, part){
 			// // RECIPES MUST HAVE THIS INGREDIENT
 			allowedIngredient: animal+' '+part
 		},
-		success: function(result, recipeID){
+		beforeSend: function(){offalApp.preload()},
+		success: function(result){
 			console.log(result);
-			offalApp.searchResults.empty();
+			// SEARCH RESULTS FADE IN & SCROLL TO SEARCH RESULTS
+			setTimeout(function(){
+				$('#results').fadeIn(900); 
+				$.smoothScroll({
+					scrollTarget: '#results',
+					speed: 900,
+					afterScroll: function(){offalApp.preload()}
+				});
+			},1000);
 			offalApp.displaySearchResults(result.matches);
-		}
-	});
+			}
+		});
 };
 	};
 
@@ -338,12 +380,15 @@ offalApp.displaySearchResults = function(result){
 
 // DOC READY
 $(function(){
+	$(window).scrollTop(0);
 	// RESET FORMS
 	document.forms["userOptions"].reset();
 	// CALL INIT
 	offalApp.init();
 
-	// HIDE EVERYTHING EXCEPT HEADER
+	
+
+	// HIDE FOOTER
 
 	$('footer').hide();
 
@@ -422,7 +467,10 @@ $(function(){
 		document.forms["userOptions"].reset();
 		$.smoothScroll({
 			scrollTarget: '#userOptions',
-			speed: 600
+			speed: 600,
+			afterScroll: function(){
+				$('#results').hide();
+			}
 		});
 	});
 

@@ -93,6 +93,16 @@
 	}
 }
 
+@media all and (max-width: 760px) {
+	.userOptions {
+		form fieldset.choosePart{
+			label {
+			margin:0 13% 5%;
+			}	
+		} 
+	}
+}
+
 @media all and (max-width: 715px) {
 	aside.top {
 		display: block;
@@ -204,9 +214,6 @@
 		width: 295px;
 		height: 197px;
 	}
-	.userOptions form fieldset.choosePart label {
-		font-size: 1.6rem;
-	}
 }
 
 @media all and (max-width: 400px) {
@@ -226,6 +233,9 @@
 	}
 	.userOptions form fieldset.choosePart {
 		margin-bottom: 30px;
+		label {
+			margin-bottom: 8%;
+		}
 	}
 	aside.top {
 		button {

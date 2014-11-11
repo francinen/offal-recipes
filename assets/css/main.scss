@@ -44,18 +44,6 @@
 }
 
 @font-face {
-    font-family: 'sorts_mill_goudyitalic';
-    src: url('../fonts/sortsmillgoudy_italic_macroman/GoudyStM-Italic-webfont.eot');
-    src: url('../fonts/sortsmillgoudy_italic_macroman/GoudyStM-Italic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/sortsmillgoudy_italic_macroman/GoudyStM-Italic-webfont.woff') format('woff'),
-         url('../fonts/sortsmillgoudy_italic_macroman/GoudyStM-Italic-webfont.ttf') format('truetype'),
-         url('../fonts/sortsmillgoudy_italic_macroman/GoudyStM-Italic-webfont.svg#sorts_mill_goudyitalic') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
     font-family: 'sorts_mill_goudyregular';
     src: url('../fonts/sortsmillgoudy_regular_macroman/GoudyStM-webfont.eot');
     src: url('../fonts/sortsmillgoudy_regular_macroman/GoudyStM-webfont.eot?#iefix') format('embedded-opentype'),
@@ -291,10 +279,10 @@ path.heart {
 
 @-webkit-keyframes heartbeat {
 	from {
-		transform: scale(1);
+		-webkit-transform: scale(1);
 	}
 	to {
-		transform: scale(1.03);
+		-webkit-transform: scale(1.03);
 	}
 }
 
@@ -304,6 +292,30 @@ path.heart {
 	}
 	to {
 		transform: scale(1.03);
+	}
+}
+
+@-webkit-keyframes cleaver {
+	0% {
+		-webkit-transform: rotate(0);
+	}
+	50% {
+		-webkit-transform: rotate(-45deg);
+	}
+	100% {
+		-webkit-transform: rotate(0deg);
+	}
+}
+
+@keyframes cleaver {
+	0% {
+		transform: rotate(0);
+	}
+	50% {
+		transform: rotate(-45deg);
+	}
+	100% {
+		transform: rotate(0deg);
 	}
 }
 
@@ -387,6 +399,7 @@ a#home {
 					font-size: 2rem;
 					color: #454a51;
 					font-family: $goudyRegular;
+					font-weight: bold;
 				}
 			}
 			object.animalIcon {
@@ -444,11 +457,12 @@ a#home {
 				position: relative;
 				// background: #918d81;
 				border: 1px solid #918d81;
-				margin: 2% 2% 0 2%;
+				margin: 2% 2% 0;
 				text-align: center;
-				color: #918d81;
+				color: #605e59;
 				letter-spacing: 1px;
 				font-family: $goudyRegular;
+				font-weight: bold;
 				&:hover {
 					cursor: pointer;
 				}
@@ -463,8 +477,29 @@ a#home {
 				}
 			}
 		}
+		div.search {
+			height: 150px;
+		}
 		#searchButton {
 			@include buttonStyle;
+		}
+		#preloader {
+			display: none;
+			margin: 0 auto;
+			text-align: center;
+			img {
+				width: 90px;
+				-webkit-transform-origin: right bottom;
+				transform-origin: right bottom;
+				animation: cleaver 1.2s ease infinite;
+				-webkit-animation: cleaver 1.2s ease infinite;
+				margin-bottom: 20px;
+			}
+			h3 {
+				font-family: $goudyRegular;
+				color:#918d81; 
+			}
+			
 		}
 	}
 
