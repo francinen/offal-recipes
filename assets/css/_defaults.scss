@@ -1,0 +1,42 @@
+
+html {
+    font-size: 62.5%;
+}
+
+.wrapper {
+    width: 70%;
+    max-width: 1200px;
+    padding: 50px 0 150px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+a,
+a:hover,
+a:visited {
+    text-decoration: none;
+}
+
+a, a:visited {
+    color: #e2e2e2;
+}
+
+a:visited, a:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
+button:focus {
+    outline: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+body {
+    font-size: 2rem;
+    font-family: $font-light;
+    letter-spacing: 1.4px;
+}

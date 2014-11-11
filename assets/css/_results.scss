@@ -1,0 +1,269 @@
+
+
+// RESULTS 
+div.resultsBkg {
+	background-color: #445463;
+	width: 100%;
+	padding: 0;
+	min-height: 800px; 
+	position: relative;
+	display: none;
+	.wrapper {
+		width: 90%;
+		max-width: 1200px;
+		padding: 5% 0 10% 0;
+
+	}
+}
+
+	// FILTERS
+	aside.side, aside.top {
+		height: auto;
+		display: inline-block;
+		text-align: left;
+		h2 {
+			color: #f7f7f7;
+			font-family: $font-light;
+			font-size: 2rem;
+		}
+		button {
+		
+			@include filterStyle;
+			margin-bottom: 12px;
+			&:hover {
+				@include filterEffects;
+			}
+			span {
+				display: inline-block;
+				vertical-align: middle;
+			}
+		}
+		.currentFilter {
+			@include filterEffects;
+		}
+		.goBack {
+			position: relative;
+			margin-top: 25px;
+			padding-top: 15px;
+		}
+		button {
+			display: block;
+		}
+	}
+	aside.side {
+		width: 25%;
+		position: absolute;
+		top: 3%;
+		left: 5%;
+		.fa, object {
+			margin-right: 5px;
+		}
+		.fa {
+			font-size: 18px;
+			color: #91969D;
+			
+		}
+		object {
+			float: left;
+			width: 20px;
+			height: 20px;
+			svg {
+				fill: #91969D;
+				width: 100%;
+				height: 100%;
+			}
+		}
+		button {
+			&:hover .fa {
+				color: #f7f7f7;
+			}
+			&:hover svg {
+				fill: #f7f7f7;
+			}
+		}
+		h2 {
+			color: #f7f7f7;
+			font-family: $font-light;
+			font-size: 1.8rem;
+		}
+		button {
+			margin-bottom: 12px;
+			&:first-of-type {
+				margin-top: 10px;
+			}
+		}
+		.goBack:before {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 0;
+			height: 1px;
+			width: 60%;
+			border-top: 1px dashed white;
+		}
+	}
+	aside.fixed {
+		position: fixed;
+		top: 11%;
+	}
+	aside.top {
+		width: 100%;
+		display: none;
+		div.filterOptions {
+			display: none;
+
+		}
+		// position: absolute;
+		// top: 3%;
+		// left: 5%;
+		h2 {
+			margin-bottom: 15px;
+			// border-bottom: 1px dashed white;
+		}
+		button {
+			float: left;
+			margin-right: 10px;
+			font-size: 1.5rem;
+			padding: 8px 15px;
+
+		}
+		// .goBack:before {
+		// 	content: "";
+		// 	position: absolute;
+		// 	left: 0;
+		// 	top: 0;
+		// 	height: 1px;
+		// 	width: 60%;
+		// 	border-top: 1px dashed white;
+		// }
+	}
+	// aside.filters#side {
+		
+		
+	// }
+	// aside#top {
+	// 	display: none;
+	// 	width: 25%;
+	// 	position: absolute;
+	// 	top: 3%;
+	// 	left: 5%;
+	// 	button {
+	// 		display: block;
+	// 	}
+	// 	.goBack:before {
+	// 		content: "";
+	// 		position: absolute;
+	// 		left: 0;
+	// 		top: 0;
+	// 		height: 1px;
+	// 		width: 60%;
+	// 		border-top: 1px dashed white;
+	// 	}
+	// }
+	// SEARCH RESULTS
+	section.results {
+		width: 73%;
+		float: right;
+		text-align: left;
+		// margin: 0 auto;
+		// float: right;
+		
+		// border: 1px solid white;
+		#credit {
+			color: lighten(#f7f7f7,4);
+			text-align: right;
+			border-top: 2px solid #5D677B;
+			#yummly {
+				display: none;
+			}
+			img {
+				position: relative;
+				top: 11px;
+			}
+		}
+		ul {
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+			.recipe {
+				width: 100%;
+				list-style-type: none;
+				// background-color: rgba(26,65,91,0.85);
+				padding: 20px;
+				border-top: 2px solid #5D677B;
+				position: relative;
+				-webkit-transition: background-color 0.2s;
+				transition: background-color 0.2s;
+				&:hover {
+					background-color: rgba(50,67,83,0.7);
+					cursor: pointer;
+				}
+			}
+
+		}
+		span.primary {
+			// float:left;
+			width: 100%;
+			font-family: $font-medium;
+			font-family: $goudyRegular;
+			h3 {
+				font-size: 2rem;
+				margin-bottom: 8px;
+
+			}
+			h4 {
+				font-size: 1.8rem;
+				color: lighten(#5D677B,25);
+			}
+		}
+		.recipeImage {
+			width: 300px;
+			height: 300px*0.6666;
+			overflow: hidden;
+			float: left;
+			margin-right: 20px;
+			border-radius: 5px;
+			border: 2px solid #5D677B;
+			
+			// float: right;
+			img {
+			 width: 100%;
+			}
+		}
+
+		span.secondary {
+			position: relative;
+			top: 10px;
+			font-size: 1.6rem;
+			h5{
+			margin-bottom: 5px;
+			}
+			button {
+				// padding: 10px 15px;
+				// background: lighten(#5D677B,25);
+				padding: 0 0 5px;
+				background: none;
+				box-shadow: none;
+				border: none;
+				font-weight: 600;
+				font-size: 0.8em;
+				margin-top: 25px;
+				float: right;
+				color: lighten(#5D677B,25);
+				border-bottom: 1px dashed #fff;
+				.fa-caret-right {
+					font-size: 1.5em;
+					margin-left: 8px;
+					position: relative;
+					top: -8px;
+				}
+				&:hover {
+					color: #fff;
+				}
+			}
+		}
+		
+	}
+
+
+// END OF RESULTS

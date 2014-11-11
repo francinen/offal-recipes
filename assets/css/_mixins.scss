@@ -1,0 +1,49 @@
+// MIXINS
+@mixin buttonStyle {
+	border: 2px solid #918d81;
+	font-size: 3rem;
+	padding: 10px 30px;
+	background: none;
+	border-radius: 50px;
+	text-align: center;
+	font-family: $goudyRegular;
+	color: #918d81;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+	font-size: 3.8rem;
+	&:hover {
+		color: #d43b00;
+		border-color: #d43b00;
+	}
+}
+
+@mixin buttonEffects {
+	cursor: pointer;
+	box-shadow: none;
+	border: 3px solid #fff;
+	background: rgba(36, 49, 62, 1);
+	color: #f7f7f7;
+}
+
+@mixin filterStyle {
+	box-shadow: none;
+	border: 2px solid #5D677B;
+	font-size: 1.8rem;
+	padding: 10px 20px;
+	background: rgba(50, 67, 83, 0.9);
+	border-radius: 50px;
+	text-align: center;
+	font-family: $font-light;
+	color: #91969D;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+@mixin filterEffects {
+	// position: relative;
+	// top: 2px;
+	// background: #7996A7;
+	border:2px solid #24313E;
+	color: #f7f7f7;
+	// border: none;
+}
