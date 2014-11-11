@@ -13,60 +13,62 @@ offalApp.init = function(){
 	// WHEN SEARCH BUTTON IS CLICKED...
 	$('#searchButton').on('click', function(e){
 		e.preventDefault();
-		$('#results').fadeIn(400); // SEARCH RESULTS FADE IN
-		var selectedAnimal = offalApp.getAnimal(); // FIND AND STORE SELECTED ANIMAL
-		var selectedPart = offalApp.getPart(); // FIND AND STORE SELECTED OFFAL
+			var selectedAnimal = offalApp.getAnimal(); // FIND AND STORE SELECTED ANIMAL
+			var selectedPart = offalApp.getPart(); // FIND AND STORE SELECTED OFFAL
 
-		if (selectedAnimal && selectedPart){ // IF USER SELECTED AN ANIMAL AND OFFAL
-			offalApp.searchResults.empty(); 
-			offalApp.getSearchResults(selectedAnimal, selectedPart);
-			// GET RID OF ANY PREVIOUS ALERT MESSAGES
-			$('#chooseAnimal').css('border','none').find('h2').text('Step 1: Choose an Animal').removeClass('alert').remove('i.fa-exclamation-circle');
-			$('#choosePart').css('border','none').find('h2').text('Step 2: Pick your offal').removeClass('alert').remove('i.fa-exclamation-circle');
-			// DISABLE ANY CURRENT FILTERS
-			$('button.rated, button.quickest, button.meaty').removeClass('currentFilter');
-			// SHOW ALL RESULTS
-			$('button.all').addClass('currentFilter');
-			// SCROLL TO SEARCH RESULTS
-			$.smoothScroll({
-					scrollTarget: '#results',
-					speed: 800,
+			if (selectedAnimal && selectedPart){ // IF USER SELECTED AN ANIMAL AND OFFAL
+				offalApp.searchResults.empty(); 
+				offalApp.getSearchResults(selectedAnimal, selectedPart);
+				// GET RID OF ANY PREVIOUS ALERT MESSAGES
+				$('#chooseAnimal').css('border','none').find('h2').text('Step 1: Choose an Animal').removeClass('alert').remove('i.fa-exclamation-circle');
+				$('#choosePart').css('border','none').find('h2').text('Step 2: Pick your offal').removeClass('alert').remove('i.fa-exclamation-circle');
+				// DISABLE ANY CURRENT FILTERS
+				$('button.rated, button.quickest, button.meaty').removeClass('currentFilter');
+				// SHOW ALL RESULTS
+				$('button.all').addClass('currentFilter');
+						
+				$('#results').fadeIn(900); // SEARCH RESULTS FADE IN & SCROLL TO SEARCH RESULTS
+					$.smoothScroll({
+						scrollTarget: '#results',
+						speed: 900,
+					});	
+
+				// FILTERS LIST BECOMES FIXED
+				$(document).scroll(function(){
+					var y = $(this).scrollTop();
+					var x = $('.resultsBkg').position();
+					if (y > (x.top - 50)) {
+						$('.side').addClass('fixed');
+					}else{
+						$('.side').removeClass('fixed');
+					}
 				});
-			// FILTERS LIST BECOMES FIXED
-			$(document).scroll(function(){
-				var y = $(this).scrollTop();
-				var x = $('.resultsBkg').position();
-				if (y > (x.top - 50)) {
-					$('.side').addClass('fixed');
-				}else{
-					$('.side').removeClass('fixed');
-				}
-			});
-			
-		 // IF USER SELECTS ANIMAL BUT NOT OFFAL
-		}else if (selectedAnimal && !selectedPart) {
-			// ALERT MESSAGE
-			$('#choosePart').css('border','5px solid #a50000').find('h2').text('Don\'t forget the offal').addClass('alert').prepend($('<i class="fa fa-exclamation-circle"></i>').addClass('alert').css({'position': 'relative','left':'-20px'}));
-			// SCROLL TO OFFAL OPTIONS
-			$.smoothScroll({
-				scrollTarget: '#choosePart',
-				speed: 400,
-				offset: -20
-			});
-			// KEEP SEARCH RESULTS SECTION HIDDEN
-			$('#results').hide();
-		}else {
-			// IF USER CHOSE NEITHER AN ANIMAL NOR OFFAL, SHOW ALERT MESSAGE
-			$('#chooseAnimal').css('border','5px solid #a50000').find('h2').text('Choose an animal').addClass('alert').prepend($('<i class="fa fa-exclamation-circle"></i>').addClass('alert').css({'position': 'relative','left':'-20px'}));
-			// SCROLL TO ANIMAL OPTIONS
-			$.smoothScroll({
-				scrollTarget: '#chooseAnimal',
-				speed: 400,
-				offset: -20
-			});
-			// KEEP SEARCH RESULTS SECTION HIDDEN
-			$('#results').hide();
-		}
+				
+			 // IF USER SELECTS ANIMAL BUT NOT OFFAL
+			}else if (selectedAnimal && !selectedPart) {
+				// ALERT MESSAGE
+				$('#choosePart').css('border','5px solid #a50000').find('h2').text('Don\'t forget the offal').addClass('alert').prepend($('<i class="fa fa-exclamation-circle"></i>').addClass('alert').css({'position': 'relative','left':'-20px'}));
+				// SCROLL TO OFFAL OPTIONS
+				// $.smoothScroll({
+				// 	scrollTarget: '#choosePart',
+				// 	speed: 400,
+				// 	offset: -20
+				// });
+				// KEEP SEARCH RESULTS SECTION HIDDEN
+				$('#results').hide();
+			}else {
+				// IF USER CHOSE NEITHER AN ANIMAL NOR OFFAL, SHOW ALERT MESSAGE
+				$('#chooseAnimal').css('border','5px solid #a50000').find('h2').text('Choose an animal').addClass('alert').prepend($('<i class="fa fa-exclamation-circle"></i>').addClass('alert').css({'position': 'relative','left':'-20px'}));
+				// SCROLL TO ANIMAL OPTIONS
+				$.smoothScroll({
+					scrollTarget: '#chooseAnimal',
+					speed: 400,
+					offset: -20
+				});
+				// KEEP SEARCH RESULTS SECTION HIDDEN
+				$('#results').hide();
+			}
+		
 	});
 	
 };
@@ -76,6 +78,7 @@ offalApp.filterParts = function(){
 	
 	$('input[value=chicken]').on('click', function(){
 		$('.choosePart').find('label, input, p').css('display','none');
+		
 		var $chickenParts = $('label.heart, label.liver, label.feet, label.gizzard');
 		$chickenParts.show();
 		if ($(window).innerWidth()>=760){
@@ -128,7 +131,7 @@ offalApp.filterParts = function(){
 		}
 		$(window).resize(function(){
 			if ($(window).innerWidth()>=760){
-				$lambParts.css({'width': '21%'});
+				$lambParts.css({'width': '46%'});
 			}else{
 				$lambParts.css({'width': '96%'});
 			}
@@ -143,13 +146,13 @@ offalApp.filterParts = function(){
 		var $pigParts = $('label.tail, label.feet, label.ear');
 		$pigParts.css({'display':'block'});
 		if ($(window).innerWidth()>=760){
-			$pigParts.css({'width': '21%'});
+			$pigParts.css({'width': '29.3333%'});
 		}else{
 			$pigParts.css({'width': '96%'});
 		}
 		$(window).resize(function(){
 			if ($(window).innerWidth()>=760){
-				$pigParts.css({'width': '21%'});
+				$pigParts.css({'width': '29.3333%'});
 			}else{
 				$pigParts.css({'width': '96%'});
 			}
@@ -293,7 +296,8 @@ offalApp.displaySearchResults = function(result){
 		// 1) Append recipe name and source to span.primary
 		var primaryDetails = $('<span>').addClass('primary').append(recipeName, recipeSource);
 		// 2) Append recipe time and rating to span.secondary
-		var secondaryDetails = $('<span>').addClass('secondary').append( recipeTime, recipeRating);
+		var viewRecipe = $('<button>').addClass('clearfix').html('View Recipe<i class="fa fa-caret-right"></i>');
+		var secondaryDetails = $('<span>').addClass('secondary').append( recipeTime, recipeRating, viewRecipe);
 		// 3) HACK ALERT: Remove default sizing on thumbnail image if provided by API
 		if (item.hasOwnProperty('smallImageUrls')){
 			var imgSrc = item.smallImageUrls.toString().replace('=s90', ''); 
@@ -327,6 +331,7 @@ offalApp.displaySearchResults = function(result){
 
 	});
 	// SHOW THE FOOTER
+	$('body').css({'background':'#445463'});
 	$('footer').show();
 };
 
@@ -341,6 +346,8 @@ $(function(){
 	// HIDE EVERYTHING EXCEPT HEADER
 
 	$('footer').hide();
+
+
 
 
 	var showOptions = function(){
@@ -415,8 +422,7 @@ $(function(){
 		document.forms["userOptions"].reset();
 		$.smoothScroll({
 			scrollTarget: '#userOptions',
-			speed: 600,
-			offset: 130
+			speed: 600
 		});
 	});
 

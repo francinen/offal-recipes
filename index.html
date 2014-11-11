@@ -7317,7 +7317,7 @@
 				<fieldset class="choosePart" id="choosePart">
 					<h2>Step 2: Pick your offal</h2>
 					<!-- brain -->
-					<div class="partContainer">
+					<div class="partContainer clearfix">
 						<p>Select an animal to see your options.</p>
 
 						<input type="radio" name="part" class="brain" id="brain" value="brain">
@@ -7371,6 +7371,7 @@
 					<!-- /feet -->
 				</fieldset>
 				<!-- Search Button -->
+				<h2>Step 3: Find recipes!</h2>
 				<input type="submit" value="Search" id="searchButton" id="button" >
 			</form>
 			<!-- /form -->
@@ -7380,28 +7381,37 @@
 	<!-- /#userOptions -->
 
 	<div class="resultsBkg" id="results">
-		<div class="wrapper clearfix">
+		<div class="wrapper clearfix" >
 			<aside class="side clearfix" id="filters">
 				<h2>Filter Results</h2>
-				<button class="rated">Highest Rated</button>
-				<button class="quickest">30 Minutes or Less</button>
-				<button class="meaty clearfix">
+				<button class="rated"><i class="fa fa-star"></i>Highest Rated</button>
+				<button class="quickest"><i class="fa fa-clock-o"></i>30 Minutes or Less</button>
+				<button class="meaty clearfix"><object>
+						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							 viewBox="3 13 94 74.7" enable-background="new 3 13 94 74.7" xml:space="preserve">
+						<path d="M90.1,18.2C84,5.3,71.3,24.7,46.6,22.7v0c-24.7-2-42.3,9-42.2,24.7C4.5,63.3,9.6,76.8,37.2,75
+							C64.7,73.3,96.2,31.1,90.1,18.2z M38.2,48.9l-4.4,12.4l1.3-14l-13.5-6.9l0,0l0,0l0,0l14.6,4.1l26.9-12.5l1.7,4.3L38.2,48.9z"/>
+						<path id="_380243240" d="M94.3,28.3c11.9,33.9-64.3,80.4-79.2,45.5C42.5,89.4,82.5,60.4,94.3,28.3z"/>
+						<polygon id="_206167344" fill="none" stroke="#000000" stroke-width="0.9" points="21.6,40.4 36.2,44.5 63.1,32.1 64.7,36.4 
+							38.2,48.9 33.8,61.3 35.1,47.3 "/>
+						</svg>
+					</object>
 				Most Carnivorous</button>
 				<button class="all">Show All</button>
 				<div class="goBack">
-					<button id="scrollToFirst">Top of List</button>
+					<button id="scrollToFirst">Back to Top</button>
 					<button id="newSearch">New Search</button>
 				</div>	
 			</aside>
 			<aside class="top">
-				<a href="#" id="showFilters"><h2>Filter Results <i class="fa fa-chevron-down"></i></h2></a>
+				<a href="#" id="showFilters"><h2>Filter Results </h2></a>
 				<div class="filterOptions clearfix">
 					<button class="rated">Highest Rated</button>
 					<button class="quickest">30 Minutes or Less</button>
 					<button class="meaty clearfix">
 					Most Carnivorous</button>
 					<button class="all">Show All</button>
-					<button id="scrollToFirst">Top of List</button>
+					<button id="scrollToFirst">Back to Top</button>
 					<button id="newSearch">New Search</button>
 
 				</div>
@@ -7411,8 +7421,8 @@
 				<ul id="#resultsList">
 				<!-- APPEND SEARCH RESULTS HERE -->
 				<!-- TEMPLATE -->
-				<li class="clearfix recipe">
-						<a href="">
+	<!-- 			<li class="clearfix recipe">
+						<a href="" class="clearfix">
 						<div class="recipeImage">
 							<img src="http://lh5.ggpht.com/Z_bfwmKnhxN-5V7Fz8cEWqdM_1WicQW_jb4lCG2JHNEZYEtgByqCvtIH0geHVVoLLTHQ-Sh_SmzTWJV67jYKoSw" alt="">
 						</div>
@@ -7423,9 +7433,11 @@
 							<span class="secondary">
 								<h5>Rating:<span></span>/5</h5>
 								<h6>Ready in</h6>
+								<button class="viewRecipe">View Recipe<i class="fa fa-caret-right"></i></button>
 							</span>
+							
 						</a>
-					</li>
+					</li> -->
 				</ul>
 				<h5 id="credit">Recipe search powered by <a href="http://www.yummly.com/recipes" target="_blank"><span id="yummly">Yummly</span><img src="assets/images/icons/yummly.png"></a></h5>
 			</section>

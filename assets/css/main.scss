@@ -176,7 +176,7 @@ body {
 	font-size: 2rem;
 	font-family: $font-light;
 	letter-spacing: 1.4px;
-	background: #445463;
+	// background: #445463;
 }
 
 .wrapper {
@@ -340,6 +340,12 @@ a#home {
 	}
 	form {
 		font-family: $font-light;
+		h2 {
+				font-family: $hvdPoster;
+				font-size: 3.5rem;
+				color: #d43b00;
+				margin-bottom: 30px;
+			}
 		fieldset {
 			border: none;
 			// background-color: rgba(230,230,230,0.85);
@@ -348,12 +354,7 @@ a#home {
 			margin: 0 auto;
 			margin-bottom: 20px;
 			text-align: center;
-			h2 {
-				font-family: $hvdPoster;
-				font-size: 3.5rem;
-				color: #d43b00;
-				margin-bottom: 30px;
-			}
+			
 			.alert {
 				color: #a50000;
 				font-size: 4rem;
@@ -420,7 +421,7 @@ a#home {
 				margin: 0;
 			}
 			.partContainer {
-				width: 90%;
+				width: 70%;
 				margin: 0 auto;
 				text-align: center;
 			}
@@ -431,19 +432,34 @@ a#home {
 
 				&:checked + label {
 					background: #454a51;
+					color: #fff;
+					&:before {
+						border: 1px dashed #fff;
+					}
 				}
 
 			}
 			label {
 				padding: 10px;
-				background: #918d81;
+				position: relative;
+				// background: #918d81;
+				border: 1px solid #918d81;
 				margin: 2% 2% 0 2%;
 				text-align: center;
-				color: #f4f4f4;
+				color: #918d81;
 				letter-spacing: 1px;
 				font-family: $goudyRegular;
 				&:hover {
 					cursor: pointer;
+				}
+				&:before {
+					content: '';
+					position: absolute;
+					top: 4px;
+					left: 4px;
+					right: 4px;
+					bottom: 4px;
+					border: 2px solid #918d81;
 				}
 			}
 		}
@@ -460,7 +476,7 @@ div.resultsBkg {
 	background-color: #445463;
 	width: 100%;
 	padding: 0;
-	min-height: 600px; 
+	min-height: 800px; 
 	position: relative;
 	display: none;
 	.wrapper {
@@ -485,8 +501,7 @@ div.resultsBkg {
 		
 			@include filterStyle;
 			margin-bottom: 12px;
-			&:hover,
-			&:focus {
+			&:hover {
 				@include filterEffects;
 			}
 			span {
@@ -511,6 +526,32 @@ div.resultsBkg {
 		position: absolute;
 		top: 3%;
 		left: 5%;
+		.fa, object {
+			margin-right: 5px;
+		}
+		.fa {
+			font-size: 18px;
+			color: #91969D;
+			
+		}
+		object {
+			float: left;
+			width: 20px;
+			height: 20px;
+			svg {
+				fill: #91969D;
+				width: 100%;
+				height: 100%;
+			}
+		}
+		button {
+			&:hover .fa {
+				color: #f7f7f7;
+			}
+			&:hover svg {
+				fill: #f7f7f7;
+			}
+		}
 		h2 {
 			color: #f7f7f7;
 			font-family: $font-light;
@@ -626,6 +667,7 @@ div.resultsBkg {
 				transition: background-color 0.2s;
 				&:hover {
 					background-color: rgba(50,67,83,0.7);
+					cursor: pointer;
 				}
 			}
 
@@ -667,7 +709,31 @@ div.resultsBkg {
 			h5{
 			margin-bottom: 5px;
 			}
+			button {
+				// padding: 10px 15px;
+				// background: lighten(#5D677B,25);
+				padding: 0 0 5px;
+				background: none;
+				box-shadow: none;
+				border: none;
+				font-weight: 600;
+				font-size: 0.8em;
+				margin-top: 25px;
+				float: right;
+				color: lighten(#5D677B,25);
+				border-bottom: 1px dashed #fff;
+				.fa-caret-right {
+					font-size: 1.5em;
+					margin-left: 8px;
+					position: relative;
+					top: -8px;
+				}
+				&:hover {
+					color: #fff;
+				}
+			}
 		}
+		
 	}
 
 
